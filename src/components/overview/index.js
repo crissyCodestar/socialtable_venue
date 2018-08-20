@@ -69,12 +69,15 @@ export default function OverviewHOC(props) {
 		query={getOverview}
 		variables={{ language: "english" }}
 	>
-		{({ data }) => (
+
+		{({ loading, error, data }) => (
+
 			<Overview
+
 				{...props}
 				listing={data && data.listing || {}} // eslint-disable-line no-mixed-operators
 				description={data && data.description && data.description.content}
 			/>
 		)}
-	</Query>;
+	</Query>
 }
